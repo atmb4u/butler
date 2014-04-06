@@ -4,48 +4,30 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Butler by atmb4u</title>
+
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/main.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <script src="javascripts/scale.fix.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
-
+    <div class="wrapper">
       <header>
         <h1>Butler</h1>
         <p>Python Dictionaries and Lists on Steroids</p>
+        <p class="view"><a href="https://github.com/atmb4u/butler">View the Project on GitHub <small>atmb4u/butler</small></a></p>
+        <ul>
+          <li><a href="https://github.com/atmb4u/butler/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/atmb4u/butler/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/atmb4u/butler">View On <strong>GitHub</strong></a></li>
+        </ul>
       </header>
-
-      <div id="banner">
-        <span id="logo"></span>
-
-        <a href="https://github.com/atmb4u/butler" class="button fork"><strong>View On GitHub</strong></a>
-        <div class="downloads">
-          <span>Downloads:</span>
-          <ul>
-            <li><a href="https://github.com/atmb4u/butler/zipball/master" class="button">ZIP</a></li>
-            <li><a href="https://github.com/atmb4u/butler/tarball/master" class="button">TAR</a></li>
-          </ul>
-        </div>
-      </div><!-- end banner -->
-
-    <div class="wrapper">
-      <nav>
-        <ul></ul>
-      </nav>
       <section>
-        <h1>
-<a name="butler" class="anchor" href="#butler"><span class="octicon octicon-link"></span></a>Butler</h1>
-
-<h1>
-<a name="python-dictionaries-and-lists-on-steroids" class="anchor" href="#python-dictionaries-and-lists-on-steroids"><span class="octicon octicon-link"></span></a>Python Dictionaries and Lists on Steroids</h1>
-
-<p>Butler is the missing library that adds <em>additional</em> and <em>necessary</em> features to Python <code>dict</code> as well as <code>list</code>. Butler tries to be closely resemble the cpython dictionary functions, but has got a ton of helper functions</p>
+        <p>Butler is the missing library that adds <em>additional</em> and <em>necessary</em> features to Python <code>dict</code> as well as <code>list</code>. Butler tries to be closely resemble the cpython dictionary functions, but has got a ton of helper functions</p>
 
 <p><strong>Bulter suppresses errors and exceptions.</strong> Its good as well as bad depends on what you expect from it. Also on the kind of data you are working with. If its a huge document(eg., <strong>JSON</strong> ) with nullable fields and a lot of multi-level lists, <code>Butler</code> is designed for you.</p>
 
@@ -63,14 +45,19 @@
 <h2>
 <a name="quick-start--guide" class="anchor" href="#quick-start--guide"><span class="octicon octicon-link"></span></a>Quick Start  Guide</h2>
 
-<div class="highlight highlight-python"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">'b'</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="p">{</span><span class="s">'d'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'e'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">'f'</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="s">'g'</span><span class="p">:[{</span><span class="s">'h'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">'i'</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s">'j'</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span>
-<span class="o">...</span> <span class="s">'b'</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="mi">13</span><span class="p">}]},</span> <span class="s">'n'</span><span class="p">:</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">]}</span>  <span class="c"># define dictionary - can be a parsed output of json.loads or json.load</span>
+<div class="highlight highlight-python"><pre><span class="c"># define dictionary - can be a parsed output of json.loads or json.load</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">'b'</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="p">{</span><span class="s">'d'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'e'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">'f'</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+<span class="o">...</span> <span class="s">'g'</span><span class="p">:[{</span><span class="s">'h'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">'i'</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s">'j'</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span>
+<span class="o">...</span> <span class="s">'b'</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="mi">13</span><span class="p">}]},</span> <span class="s">'n'</span><span class="p">:</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">]}</span> 
 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">quick</span> <span class="o">=</span> <span class="n">Butler</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c"># create an instance of Butler with the data</span>
+
+<span class="c"># create an instance of Butler with the data</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">quick</span> <span class="o">=</span> <span class="n">Butler</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> 
 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">quick</span><span class="o">.</span><span class="n">path_exists</span><span class="p">([</span><span class="s">'c'</span><span class="p">,</span> <span class="s">'g'</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">'k'</span><span class="p">])</span>  <span class="c"># tells you if the element exists</span>
 <span class="bp">False</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">quick</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s">'c'</span><span class="p">,</span> <span class="s">'g'</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> <span class="c"># fetches the value on the path, similar to ```&lt;dict&gt;.get()``` but more featured</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">quick</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s">'c'</span><span class="p">,</span> <span class="s">'g'</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> 
+ <span class="c"># fetches the value on the path, similar to ```&lt;dict&gt;.get()``` but more featured</span>
 <span class="p">{</span><span class="s">'h'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">'i'</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s">'j'</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">quick</span><span class="o">.</span><span class="n">find</span><span class="p">([</span><span class="s">'b'</span><span class="p">])</span>
 <span class="mi">12</span>
@@ -83,23 +70,26 @@
 <h2>
 <a name="key-functions" class="anchor" href="#key-functions"><span class="octicon octicon-link"></span></a>Key Functions</h2>
 
-<p><strong>get()</strong>
-<strong>path_exists()</strong>
-<strong>findall()</strong>
-<strong>find()</strong>
-<strong>key_exists()</strong></p>
+<p><strong>get()</strong></p>
+
+<p><strong>path_exists()</strong></p>
+
+<p><strong>findall()</strong></p>
+
+<p><strong>find()</strong></p>
+
+<p><strong>key_exists()</strong></p>
 
 <h2>
 <a name="get" class="anchor" href="#get"><span class="octicon octicon-link"></span></a>get()</h2>
 
 <p>Get the element by specifying path with keys to that value.</p>
 
-<pre><code>* INPUT: takes a list of keys for the dictionary or list
-
-* OUTPUT: Returns the corresponding value if found, else None. - No Exception raised
-</code></pre>
-
-<div class="highlight highlight-python"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">data1</span> <span class="o">=</span> <span class="n">Butler</span><span class="p">({</span><span class="s">"key"</span><span class="p">:</span> <span class="s">"value"</span><span class="p">})</span>
+<ul>
+<li><p>INPUT: takes a list of keys for the dictionary or list</p></li>
+<li><p>OUTPUT: Returns the corresponding value if found, else None.
+No Exception raised</p></li>
+</ul><div class="highlight highlight-python"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">data1</span> <span class="o">=</span> <span class="n">Butler</span><span class="p">({</span><span class="s">"key"</span><span class="p">:</span> <span class="s">"value"</span><span class="p">})</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">data1</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s">"key"</span><span class="p">])</span>
 <span class="s">'value'</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">data2</span> <span class="o">=</span> <span class="n">Butler</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]])</span>
@@ -114,13 +104,12 @@
 <h2>
 <a name="path_exists" class="anchor" href="#path_exists"><span class="octicon octicon-link"></span></a>path_exists()</h2>
 
-<pre><code>* INPUT: list containing path to an expected key
-
-* OUTPUT: True if found, False if NOT.
-</code></pre>
-
-<div class="highlight highlight-python"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">'b'</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="p">{</span><span class="s">'d'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'e'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">'f'</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="s">'g'</span><span class="p">:[{</span><span class="s">'h'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">'i'</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s">'j'</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span>
-<span class="o">...</span> <span class="s">'b'</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="mi">13</span><span class="p">}]},</span> <span class="s">'n'</span><span class="p">:</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">]}</span>
+<ul>
+<li><p>INPUT: list containing path to an expected key</p></li>
+<li><p>OUTPUT: <code>True</code> or <code>False</code></p></li>
+</ul><div class="highlight highlight-python"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">'b'</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="p">{</span><span class="s">'d'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'e'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">'f'</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+<span class="o">...</span> <span class="s">'g'</span><span class="p">:[{</span><span class="s">'h'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">'i'</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s">'j'</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span>
+<span class="o">...</span> <span class="s">'b'</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="mi">13</span><span class="p">}]},</span> <span class="s">'n'</span><span class="p">:</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">]}</span> 
 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">quick</span> <span class="o">=</span> <span class="n">Butler</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
@@ -135,13 +124,12 @@
 
 <p>Find all the values with the same key in a multi-level dictionary</p>
 
-<pre><code>* INPUT: key to be searched in the dictionary
-
-* OUTPUT: ```list``` of all values with matching keys
-</code></pre>
-
-<div class="highlight highlight-python"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">'b'</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="p">{</span><span class="s">'d'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'e'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">'f'</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="s">'g'</span><span class="p">:[{</span><span class="s">'h'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">'i'</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s">'j'</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span>
-<span class="o">...</span> <span class="s">'b'</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="mi">13</span><span class="p">}]},</span> <span class="s">'n'</span><span class="p">:</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">]}</span>
+<ul>
+<li><p>INPUT: key to be searched in the dictionary</p></li>
+<li><p>OUTPUT: <code>list</code> of all values with matching keys</p></li>
+</ul><div class="highlight highlight-python"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">'b'</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="p">{</span><span class="s">'d'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'e'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">'f'</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+<span class="o">...</span> <span class="s">'g'</span><span class="p">:[{</span><span class="s">'h'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">'i'</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s">'j'</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span>
+<span class="o">...</span> <span class="s">'b'</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="mi">13</span><span class="p">}]},</span> <span class="s">'n'</span><span class="p">:</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">]}</span> 
 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">quick</span> <span class="o">=</span> <span class="n">Butler</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
@@ -153,13 +141,12 @@
 
 <p>Gets the first value matching the argument key</p>
 
-<pre><code>*INPUT: key to be searched in the dict or list (list position in case of list)
-
-*OUTPUT: first result matching the key in the entire dictionary
-</code></pre>
-
-<div class="highlight highlight-python"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">'b'</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="p">{</span><span class="s">'d'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'e'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">'f'</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="s">'g'</span><span class="p">:[{</span><span class="s">'h'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">'i'</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s">'j'</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span>
-<span class="o">...</span> <span class="s">'b'</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="mi">13</span><span class="p">}]},</span> <span class="s">'n'</span><span class="p">:</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">]}</span>
+<ul>
+<li><p>INPUT: key to be searched in the dict or list (list position in case of list)</p></li>
+<li><p>OUTPUT: first result matching the key in the entire dictionary</p></li>
+</ul><div class="highlight highlight-python"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">'b'</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="p">{</span><span class="s">'d'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'e'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">'f'</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+<span class="o">...</span> <span class="s">'g'</span><span class="p">:[{</span><span class="s">'h'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">'i'</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s">'j'</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span>
+<span class="o">...</span> <span class="s">'b'</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="mi">13</span><span class="p">}]},</span> <span class="s">'n'</span><span class="p">:</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">]}</span> 
 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">quick</span> <span class="o">=</span> <span class="n">Butler</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
@@ -173,11 +160,14 @@
 <h2>
 <a name="key_exists" class="anchor" href="#key_exists"><span class="octicon octicon-link"></span></a>key_exists()</h2>
 
-<p>Uses find function to see if the requested key is in the dictionary
-Returns: <code>True</code> or <code>False</code></p>
+<p>Uses find function to see if the requested key is in the dictionary</p>
 
-<div class="highlight highlight-python"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">'b'</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="p">{</span><span class="s">'d'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'e'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">'f'</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="s">'g'</span><span class="p">:[{</span><span class="s">'h'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">'i'</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s">'j'</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span>
-<span class="o">...</span> <span class="s">'b'</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="mi">13</span><span class="p">}]},</span> <span class="s">'n'</span><span class="p">:</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">]}</span>
+<ul>
+<li><p>INPUT: key</p></li>
+<li><p>OUTPUT: <code>True</code> or <code>False</code></p></li>
+</ul><div class="highlight highlight-python"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">'b'</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="p">{</span><span class="s">'d'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'e'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">'f'</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+<span class="o">...</span> <span class="s">'g'</span><span class="p">:[{</span><span class="s">'h'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">'i'</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s">'j'</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span>
+<span class="o">...</span> <span class="s">'b'</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="mi">13</span><span class="p">}]},</span> <span class="s">'n'</span><span class="p">:</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">]}</span> 
 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">quick</span> <span class="o">=</span> <span class="n">Butler</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
@@ -187,11 +177,11 @@ Returns: <code>True</code> or <code>False</code></p>
 <span class="bp">False</span>
 </pre></div>
       </section>
-      <footer>
-        <p>Project maintained by <a href="https://github.com/atmb4u">atmb4u</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
-      </footer>
     </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/atmb4u">atmb4u</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
