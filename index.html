@@ -25,6 +25,7 @@
           <li><a href="https://github.com/atmb4u/butler/tarball/master">Download <strong>TAR Ball</strong></a></li>
           <li><a href="https://github.com/atmb4u/butler">View On <strong>GitHub</strong></a></li>
         </ul>
+        <iframe src="http://ghbtns.com/github-btn.html?user=atmb4u&repo=butler&type=watch" height="30" width="70" frameborder="0" scrolling="0" style="width:70px; height: 30px;" allowTransparency="true"></iframe>
       </header>
       <section>
         <p>Butler is the missing library that adds <em>additional</em> and <em>necessary</em> features to Python <code>dict</code> as well as <code>list</code>. Butler tries to be closely resemble the cpython dictionary functions, but has got a ton of helper functions</p>
@@ -46,6 +47,8 @@
 <a name="quick-start--guide" class="anchor" href="#quick-start--guide"><span class="octicon octicon-link"></span></a>Quick Start  Guide</h2>
 
 <div class="highlight highlight-python"><pre><span class="c"># define dictionary - can be a parsed output of json.loads or json.load</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="o">from</span> <span class="n">butler</span> <span class="o">import</span><span class="n">Butler</span>
+
 <span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">'b'</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="p">{</span><span class="s">'d'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'e'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">'f'</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
 <span class="o">...</span> <span class="s">'g'</span><span class="p">:[{</span><span class="s">'h'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">'i'</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s">'j'</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span>
 <span class="o">...</span> <span class="s">'b'</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="mi">13</span><span class="p">}]},</span> <span class="s">'n'</span><span class="p">:</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">]}</span> 
