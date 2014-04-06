@@ -1,6 +1,6 @@
 from setuptools import setup
 
-setup(name='butler',
+setup(name='python-butler',
       version='0.8a',
       description='Python Dictionaries and Lists on Steroids',
       url='http://github.com/atmb4u/butler',
