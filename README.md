@@ -34,7 +34,8 @@ python setup.py install
 
 >>> quick.path_exists(['c', 'g', 0, 'k'])  # tells you if the element exists
 False
->>> quick.get(['c', 'g', 0]) # fetches the value on the path, similar to ```<dict>.get()``` but more featured
+>>> quick.get(['c', 'g', 0]) 
+# fetches the value on the path, similar to ```<dict>.get()``` but more featured
 {'h': 8, 'i': 9, 'j': 10}
 >>> quick.find(['b'])
 12
