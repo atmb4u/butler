@@ -15,7 +15,7 @@ __Butler suppresses errors and exceptions.__ Its good as well as bad depends on 
 ##Installation
 
 ```
-pip install python-butler==0.8.8a
+pip install python-butler==0.8.9a
 ```
 
 or you can download the source from https://github.com/atmb4u/butler/ and run
@@ -38,9 +38,14 @@ python setup.py install
 
 >>> quick.path_exists(['c', 'g', 0, 'k'])  # tells you if the element exists
 False
->>> quick.get(['c', 'g', 0]) 
 # fetches the value on the path, similar to ```<dict>.get()``` but more featured
+
+>>> quick.get(['c', 'g', 0])
 {'h': 8, 'i': 9, 'j': 10}
+
+# it can take an argument called default which is taken as the default value if not found.
+>>> quick.get(['c', 'g', 5], default=0)
+0
 >>> quick.find(['b'])
 12
 >>> quick.findall(['b'])

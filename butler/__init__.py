@@ -1,6 +1,6 @@
 import warnings
 
-__version__ = "0.8.8a"
+__version__ = "0.8.9a"
 __author__ = "Anoop Thomas Mathew"
 __license__ = "BSD"
 __contact__ = "atmb4u at gmail dot com"
@@ -22,7 +22,7 @@ class Butler(object):
         >>> data1.get(["key"])
         'value'
         >>> data2 = Butler([1, 2, 4, 5, [10, 20, 30, 40, 50]])
-        >>> data2.get([4, 3])
+        >>> data2.__getitem__([4, 3])
         40
         >>> data2.get([4, 9])
 
@@ -35,11 +35,10 @@ class Butler(object):
             if type(return_obj) in [list, dict]:
                 return_obj = return_obj[key]
             else:
-                warnings.warn("Could not find the requested element", UserWarning)
                 return None
         return return_obj
 
-    def get(self, path):
+    def get(self, path, default=None):
         """
         Grab values inside nested dict and list if available, else returns None
         Returns None if looking up in string.
@@ -55,12 +54,16 @@ class Butler(object):
         >>> data3 = Butler("Hello world")
         >>> data3.get([6])
 
+        >>> data2.get([4, 10], default="BLANK")
+        'BLANK'
+        >>> data2.get([4, 42], 0)
+        0
         """
         try:
             return self[path]
         except (LookupError, TypeError):
             warnings.warn("Could not find the requested element", UserWarning)
-            return None
+            return default
 
     def path_exists(self, path):
         """
