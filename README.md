@@ -11,7 +11,7 @@ __Butler suppresses errors and exceptions.__ Its good as well as bad depends on 
 ##Installation
 
 ```
-pip install python-butler==0.8.3a
+pip install python-butler==0.8.8a
 ```
 
 or you can download the source from https://github.com/atmb4u/butler/ and run
