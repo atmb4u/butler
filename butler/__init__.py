@@ -1,7 +1,6 @@
 import warnings
 
-__version__ = "0.8.9a"
-__author__ = "Anoop Thomas Mathew"
+__version__ = "0.9"
 __license__ = "BSD"
 __contact__ = "atmb4u at gmail dot com"
 
