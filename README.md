@@ -3,7 +3,11 @@ Butler
 
 ##Python Dictionaries and Lists on Steroids
 
-Butler is the missing library that adds _additional_ and _necessary_ features to Python ```dict``` as well as ```list```. Butler tries to be closely resemble the cpython dictionary functions, but has got a ton of helper functions
+Butler is the missing library that adds _additional_ and _necessary_ features to Python ```dict``` as well as ```list```. It helps you traversing nested lists/dicts better. Butler tries to be closely resemble the cpython dictionary functions, but has got a ton of helper functions
+
+
+__Butler is NOT python dict 2.0__.
+
 
 __Butler suppresses errors and exceptions.__ Its good as well as bad depends on what you expect from it. Also on the kind of data you are working with. If its a huge document(eg., __JSON__ ) with nullable fields and a lot of multi-level lists, ```Butler``` is designed for you.
 
@@ -58,12 +62,16 @@ __find()__ - returns the first match for the keys
 
 __key_exists()__ - returns True or False, on the availability of the key anywhere in the document
 
+__path__
+========
+
+For dictionaries, path holds the keys for the element and for lists its the index for the element in the list.
 
 
 ##get()
 Get the element by specifying path with keys to that value.
 
-	* INPUT: takes a list of keys for the dictionary or list
+	* INPUT: __path__ - a list of keys for the dictionary or list
 
 	* OUTPUT: Returns the corresponding value if found, else None. 
 		- No Exception raised
