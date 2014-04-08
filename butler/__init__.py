@@ -1,3 +1,5 @@
+import warnings
+
 __version__ = "0.8.3a"
 __author__ = "Anoop Thomas Mathew"
 __license__ = "BSD"
@@ -33,6 +35,7 @@ class Butler(object):
             if type(return_obj) in [list, dict]:
                 return_obj = return_obj[key]
             else:
+                warnings.warn("Could not find the requested element", UserWarning)
                 return None
         return return_obj
 
@@ -56,6 +59,7 @@ class Butler(object):
         try:
             return self[path]
         except (LookupError, TypeError):
+            warnings.warn("Could not find the requested element", UserWarning)
             return None
 
     def path_exists(self, path):
@@ -87,7 +91,7 @@ class Butler(object):
         >>> quick = Butler(data)
 
         >>> quick.flatten(data)
-        [('a', 10), ('c', 11), ('d', 13), ('e', 15), ('d', 14), ('b', [{'c': 11, 'd': 13}, {'e': 15, 'd': 14}])]
+        [('a', 10), ('b', [{'c': 11, 'd': 13}, {'e': 15, 'd': 14}]), (0, {'c': 11, 'd': 13}), ('c', 11), ('d', 13), (1, {'e': 15, 'd': 14}), ('e', 15), ('d', 14)]
         """
         if not sub_dict:
             sub_dict = self.obj
@@ -103,7 +107,6 @@ class Butler(object):
             output.append(key)
         return output
 
-
     def flatten(self, sub_dict=None, output=None):
         """
         TODO: Make use of generators
@@ -114,20 +117,20 @@ class Butler(object):
         >>> quick = Butler(data)
 
         >>> quick.flatten(data)
-        [('a', 10), ('c', 11), ('d', 13), ('e', 15), ('d', 14), ('b', [{'c': 11, 'd': 13}, {'e': 15, 'd': 14}])]
+        [('a', 10), ('b', [{'c': 11, 'd': 13}, {'e': 15, 'd': 14}]), (0, {'c': 11, 'd': 13}), ('c', 11), ('d', 13), (1, {'e': 15, 'd': 14}), ('e', 15), ('d', 14)]
         """
         if not sub_dict:
             sub_dict = self.obj
         if not output:
             output = []
-        for key in sub_dict:
-            if isinstance(sub_dict[key], dict):
+        if isinstance(sub_dict, dict):
+            for key in sub_dict:
+                output.append((key, sub_dict[key],))
                 self.flatten(sub_dict[key], output)
-            if isinstance(sub_dict[key], list):
-                for sub_dic in sub_dict[key]:
-                    if isinstance(sub_dic, dict):
-                        self.flatten(sub_dic, output)
-            output.append((key, sub_dict[key],))
+        elif isinstance(sub_dict, list):
+            for order, element in enumerate(sub_dict):
+                output.append((order, element,))
+                self.flatten(element, output)
         return output
 
     def findall(self, key, find=False):
@@ -148,20 +151,17 @@ class Butler(object):
 
         >>> quick1.findall(5)
         [5]
+        >>> Butler([{42: 'nope'}]).findall(42)
+        ['nope']
         """
         return_list = []
-        if isinstance(self.obj, dict):
+        if isinstance(self.obj, dict) or isinstance(self.obj, list):
             flat_list = self.flatten(self.obj)
             for item_key, data in flat_list:
                 if item_key == key:
                     if find:  # API for find() to return the first result
                         return data
                     return_list.append(data)
-        elif isinstance(self.obj, list):  # kept this to keep the API consistent across list and dict
-            if len(self.obj) > key:
-                if find:  # API for find() to return the first result
-                    return self.obj[key]
-                return_list.append(self.obj[key])
         else:
             print("findall can be used only with dict or list objects")
         return return_list
