@@ -47,11 +47,15 @@ True
 
 ##Key Functions
 
-__get()__
-__path_exists()__
-__findall()__
-__find()__
-__key_exists()__
+__get()__ - returns the value at the given path
+
+__path_exists()__ - returns if the specified path exists
+
+__findall()__ - returns a list of values for matching keys
+
+__find()__ - returns the first match for the keys
+
+__key_exists()__ - returns True or False, on the availability of the key anywhere in the document
 
 
 
