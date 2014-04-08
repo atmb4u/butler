@@ -6,7 +6,7 @@ Butler
 Butler is the missing library that adds _additional_ and _necessary_ features to Python ```dict``` as well as ```list```. It helps you traversing nested lists/dicts better. Butler tries to be closely resemble the cpython dictionary functions, but has got a ton of helper functions
 
 
-__Butler is NOT python dict 2.0__.
+__Butler is NOT python dict 2.0__. It is a helper library that provides a clean API for traversing nested lists and dicts.
 
 
 __Butler suppresses errors and exceptions.__ Its good as well as bad depends on what you expect from it. Also on the kind of data you are working with. If its a huge document(eg., __JSON__ ) with nullable fields and a lot of multi-level lists, ```Butler``` is designed for you.
