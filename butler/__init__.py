@@ -1,16 +1,16 @@
 import warnings
 
-__version__ = "0.9"
+__version__ = "0.91"
 __license__ = "BSD"
 __contact__ = "atmb4u at gmail dot com"
 
 
 class Butler(object):
-    def __init__(self, obj):
+    def __init__(self, data):
         """
         Initiates with the list or dict object obj
         """
-        self.obj = obj
+        self.data = data
 
     def __getitem__(self, path):
         """
@@ -29,7 +29,7 @@ class Butler(object):
         >>> data3.get([6])
 
         """
-        return_obj = self.obj
+        return_obj = self.data
         for key in path:
             if type(return_obj) in [list, dict]:
                 return_obj = return_obj[key]
@@ -96,7 +96,7 @@ class Butler(object):
         [('a', 10), ('b', [{'c': 11, 'd': 13}, {'e': 15, 'd': 14}]), (0, {'c': 11, 'd': 13}), ('c', 11), ('d', 13), (1, {'e': 15, 'd': 14}), ('e', 15), ('d', 14)]
         """
         if not sub_dict:
-            sub_dict = self.obj
+            sub_dict = self.data
         if not output:
             output = []
         for key in sub_dict:
@@ -122,7 +122,7 @@ class Butler(object):
         [('a', 10), ('b', [{'c': 11, 'd': 13}, {'e': 15, 'd': 14}]), (0, {'c': 11, 'd': 13}), ('c', 11), ('d', 13), (1, {'e': 15, 'd': 14}), ('e', 15), ('d', 14)]
         """
         if not sub_dict:
-            sub_dict = self.obj
+            sub_dict = self.data
         if not output:
             output = []
         if isinstance(sub_dict, dict):
@@ -157,8 +157,8 @@ class Butler(object):
         ['nope']
         """
         return_list = []
-        if isinstance(self.obj, dict) or isinstance(self.obj, list):
-            flat_list = self.flatten(self.obj)
+        if isinstance(self.data, dict) or isinstance(self.data, list):
+            flat_list = self.flatten(self.data)
             for item_key, data in flat_list:
                 if item_key == key:
                     if find:  # API for find() to return the first result
@@ -191,7 +191,6 @@ class Butler(object):
 
         >>> quick1.find(2)
         3
-
         """
         data = self.findall(key, find=True)
         if data:
@@ -215,7 +214,7 @@ class Butler(object):
         >>> Butler({'name': False}).key_exists('name')
         True
         """
-        if key in self.key_list(self.obj):
+        if key in self.key_list(self.data):
             return True
         else:
             return False
