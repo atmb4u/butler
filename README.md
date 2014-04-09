@@ -52,6 +52,11 @@ False
 [12, 2]
 >>> quick.key_exists(['n'])
 True
+
+>>> quick.data  # chokes out the object which is being manipulated
+{'a':1, 'b':2, 'c': {'d': 4, 'e': 5, 'f': [6, 7, 8],
+... 'g':[{'h': 8, 'i': 9, 'j': 10}, {'a':11,
+... 'b': 12, 'c': 13}]}, 'n': [14, 15, 16, 17, 18]}
 ```
 
 
@@ -66,6 +71,9 @@ __findall()__ - returns a list of values for matching keys
 __find()__ - returns the first match for the keys
 
 __key_exists()__ - returns True or False, on the availability of the key anywhere in the document
+
+__data__ - outputs the object which is being manipulated
+
 
 __path__
 ========
