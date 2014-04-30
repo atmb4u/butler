@@ -64,6 +64,8 @@ True
 
 __get()__ - returns the value at the given path
 
+__set()__ - returns True on updating the data, False on failure
+
 __path_exists()__ - returns if the specified path exists
 
 __findall()__ - returns a list of values for matching keys
@@ -102,6 +104,49 @@ Get the element by specifying path with keys to that value.
 >>> data3.get([6])
 ```
 
+
+##set()
+Set the element by specifying path with keys to that value. Used to write to Butler objects. Makes it very easy to update and insert leaf nodes.
+        *
+	* INPUT: __path__ - a list of keys for the dictionary or list
+			 __value__ - Value to be set/update/append to the element in the matching location
+	* OUTPUT:
+        Returns True - Successful update or create
+        Returns False - Failed due to non-existent path
+
+
+```python
+>>> a = {'b': {'c': {'d': 1, 's': 1001}}}
+>>> data = Butler(a)
+>>> data.set(['b', 'c', 'd'], 1001 )
+True
+>>> a
+{'b': {'c': {'s': 1001, 'd': 1001}}}
+>>> data.set(['b','c','s'], [10,100])
+True
+>>> a
+{'b': {'c': {'s': [10, 100], 'd': 1001}}}
+>>> data.data
+{'b': {'c': {'s': [10, 100], 'd': 1001}}}
+>>> data.set(['b','q','s'], [10,100])
+False
+>>> a
+{'b': {'c': {'s': [10, 100], 'd': 1001}}}
+>>> data.data
+{'b': {'c': {'s': [10, 100], 'd': 1001}}}
+>>> b = [[1, 2, 3], 4, 5]
+>>> data = Butler(b)
+>>> data.set([0], 1001)
+True
+>>> b
+[[1, 2, 3, 1001], 4, 5]
+>>> c = [[1, 2, 3], 4, 5]
+>>> data = Butler(c)
+>>> data.set([0,2], 1001)
+True
+>>> c
+[[1, 2, 1001], 4, 5]
+```
 
 ##path_exists()
 
