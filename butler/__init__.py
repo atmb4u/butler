@@ -218,3 +218,62 @@ class Butler(object):
             return True
         else:
             return False
+
+    def set(self, li, el):
+        """
+        Used to write to Butler objects. Makes it very easy to update and insert leaf nodes.
+        ### Caution
+        Returns True - Successful update or create
+        Returns False - Failed due to non-existent path
+
+        >>> a = {'b': {'c': {'d': 1, 's': 1001}}}
+        >>> data = Butler(a)
+        >>> data.set(['b', 'c', 'd'], 1001 )
+        True
+        >>> a
+        {'b': {'c': {'s': 1001, 'd': 1001}}}
+        >>> data.set(['b','c','s'], [10,100])
+        True
+        >>> a
+        {'b': {'c': {'s': [10, 100], 'd': 1001}}}
+        >>> data.data
+        {'b': {'c': {'s': [10, 100], 'd': 1001}}}
+        >>> data.set(['b','q','s'], [10,100])
+        False
+        >>> a
+        {'b': {'c': {'s': [10, 100], 'd': 1001}}}
+        >>> data.data
+        {'b': {'c': {'s': [10, 100], 'd': 1001}}}
+        >>> b = [[1, 2, 3], 4, 5]
+        >>> data = Butler(b)
+        >>> data.set([0], 1001)
+        True
+        >>> b
+        [[1, 2, 3, 1001], 4, 5]
+        >>> c = [[1, 2, 3], 4, 5]
+        >>> data = Butler(c)
+        >>> data.set([0,2], 1001)
+        True
+        >>> c
+        [[1, 2, 1001], 4, 5]
+        """
+        try:
+            self.__update__(self.data, li, el)
+            return True
+        except KeyError:
+            return False
+
+    def __update__(self, obj, li, el):
+        """
+        Recursive function used for updating the element or inserting the element if existing
+        """
+        if len(li) == 1:
+            popped = li.pop()
+            if type(obj[popped]) == list:
+                obj[popped].append(el)
+            else:
+                obj[popped] = el
+        else:
+            x = li[0]
+            return self.__update__(obj[x], li[1:], el)
+        return True
