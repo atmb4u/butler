@@ -107,9 +107,10 @@ Get the element by specifying path with keys to that value.
 
 ##set()
 Set the element by specifying path with keys to that value. Used to write to Butler objects. Makes it very easy to update and insert leaf nodes.
-        *
+
 	* INPUT: __path__ - a list of keys for the dictionary or list
-			 __value__ - Value to be set/update/append to the element in the matching location
+	         __value__ - Value to be set/update/append to the element in the matching location
+
 	* OUTPUT:
         Returns True - Successful update or create
         Returns False - Failed due to non-existent path
