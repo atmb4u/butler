@@ -46,11 +46,11 @@ False
 # it can take an argument called default which is taken as the default value if not found.
 >>> quick.get(['c', 'g', 5], default=0)
 0
->>> quick.find(['b'])
+>>> quick.find('b')
 12
->>> quick.findall(['b'])
+>>> quick.findall('b')
 [12, 2]
->>> quick.key_exists(['n'])
+>>> quick.key_exists('n')
 True
 
 >>> quick.data  # chokes out the object which is being manipulated
