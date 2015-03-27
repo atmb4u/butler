@@ -27,12 +27,14 @@ python setup.py install
 
 ##Quick Start  Guide
 
-
 ```python
+
 >>> data = {'a':1, 'b':2, 'c': {'d': 4, 'e': 5, 'f': [6, 7, 8],
 ... 'g':[{'h': 8, 'i': 9, 'j': 10}, {'a':11,
 ... 'b': 12, 'c': 13}]}, 'n': [14, 15, 16, 17, 18]}  
 # define dictionary - can be a parsed output of json.loads or json.load
+
+>>> from butler import Butler # import Mr Butler
 
 >>> quick = Butler(data)  # create an instance of Butler with the data
 
@@ -46,11 +48,11 @@ False
 # it can take an argument called default which is taken as the default value if not found.
 >>> quick.get(['c', 'g', 5], default=0)
 0
->>> quick.find(['b'])
+>>> quick.find('b')
 12
->>> quick.findall(['b'])
+>>> quick.findall('b')
 [12, 2]
->>> quick.key_exists(['n'])
+>>> quick.key_exists('n')
 True
 
 >>> quick.data  # chokes out the object which is being manipulated
@@ -88,7 +90,7 @@ Get the element by specifying path with keys to that value.
 
 	* INPUT: __path__ - a list of keys for the dictionary or list
 
-	* OUTPUT: Returns the corresponding value if found, else None. 
+	* OUTPUT: Returns the corresponding value if found, else None.
 		- No Exception raised
 
 ```python
@@ -107,9 +109,10 @@ Get the element by specifying path with keys to that value.
 
 ##set()
 Set the element by specifying path with keys to that value. Used to write to Butler objects. Makes it very easy to update and insert leaf nodes.
-        *
+
 	* INPUT: __path__ - a list of keys for the dictionary or list
-			 __value__ - Value to be set/update/append to the element in the matching location
+	         __value__ - Value to be set/update/append to the element in the matching location
+
 	* OUTPUT:
         Returns True - Successful update or create
         Returns False - Failed due to non-existent path
@@ -156,7 +159,7 @@ True
 
 
 ```python
->>> data = {'a':1, 'b':2, 'c': {'d': 4, 'e': 5, 'f': [6, 7, 8], 
+>>> data = {'a':1, 'b':2, 'c': {'d': 4, 'e': 5, 'f': [6, 7, 8],
 ... 'g':[{'h': 8, 'i': 9, 'j': 10}, {'a':11,
 ... 'b': 12, 'c': 13}]}, 'n': [14, 15, 16, 17, 18]}
 
@@ -177,7 +180,7 @@ Find all the values with the same key in a multi-level dictionary
 	* OUTPUT: ```list``` of all values with matching keys
 
 ```python
->>> data = {'a':1, 'b':2, 'c': {'d': 4, 'e': 5, 'f': [6, 7, 8], 
+>>> data = {'a':1, 'b':2, 'c': {'d': 4, 'e': 5, 'f': [6, 7, 8],
 ... 'g':[{'h': 8, 'i': 9, 'j': 10}, {'a':11,
 ... 'b': 12, 'c': 13}]}, 'n': [14, 15, 16, 17, 18]}
 
@@ -195,7 +198,7 @@ Gets the first value matching the argument key
 
 
 ```python
->>> data = {'a':1, 'b':2, 'c': {'d': 4, 'e': 5, 'f': [6, 7, 8], 
+>>> data = {'a':1, 'b':2, 'c': {'d': 4, 'e': 5, 'f': [6, 7, 8],
 ... 'g':[{'h': 8, 'i': 9, 'j': 10}, {'a':11,
 ... 'b': 12, 'c': 13}]}, 'n': [14, 15, 16, 17, 18]}
 
@@ -214,7 +217,7 @@ Uses find function to see if the requested key is in the dictionary
 Returns: ```True``` or ```False```
 
 ```python
->>> data = {'a':1, 'b':2, 'c': {'d': 4, 'e': 5, 'f': [6, 7, 8], 
+>>> data = {'a':1, 'b':2, 'c': {'d': 4, 'e': 5, 'f': [6, 7, 8],
 ... 'g':[{'h': 8, 'i': 9, 'j': 10}, {'a':11,
 ... 'b': 12, 'c': 13}]}, 'n': [14, 15, 16, 17, 18]}
 
