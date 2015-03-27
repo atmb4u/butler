@@ -1,6 +1,6 @@
 import warnings
 
-__version__ = "0.93"
+__version__ = "0.94"
 __license__ = "BSD"
 __contact__ = "atmb4u at gmail dot com"
 
@@ -84,7 +84,7 @@ class Butler(object):
         except KeyError:
             return False
 
-    def key_list(self, sub_dict=None, output=None):
+    def key_list(self):
         """
         Flattens the sub_dict argument.
         Internal API used with find and findall functions.
@@ -92,22 +92,10 @@ class Butler(object):
 
         >>> quick = Butler(data)
 
-        >>> quick.flatten(data)
-        [('a', 10), ('b', [{'c': 11, 'd': 13}, {'e': 15, 'd': 14}]), (0, {'c': 11, 'd': 13}), ('c', 11), ('d', 13), (1, {'e': 15, 'd': 14}), ('e', 15), ('d', 14)]
+        >>> quick.key_list()
+        ['a', 'b']
         """
-        if not sub_dict:
-            sub_dict = self.data
-        if not output:
-            output = []
-        for key in sub_dict:
-            if isinstance(sub_dict[key], dict):
-                self.flatten(sub_dict[key], output)
-            if isinstance(sub_dict[key], list):
-                for sub_dic in sub_dict[key]:
-                    if isinstance(sub_dic, dict):
-                        self.flatten(sub_dic, output)
-            output.append(key)
-        return output
+        return self.data.keys()
 
     def flatten(self, sub_dict=None, output=None):
         """
@@ -213,13 +201,15 @@ class Butler(object):
         True
         >>> quick.key_exists('w')
         False
-        >>> Butler({'name': False}).key_exists('name')
+        >>> quick.key_exists('i')
         True
+        >>> quick.key_exists('i', root_level=True)
+        False
         """
         if not root_level:
             key_list = [x[0] for x in self.flatten()]
         else:
-            key_list = self.key_list(self.data)
+            key_list = self.key_list()
 
         if key in key_list:
             return True
