@@ -1,6 +1,6 @@
 import warnings
 
-__version__ = "0.92"
+__version__ = "0.93"
 __license__ = "BSD"
 __contact__ = "atmb4u at gmail dot com"
 
@@ -197,9 +197,11 @@ class Butler(object):
             return data
         return None
 
-    def key_exists(self, key):
+    def key_exists(self, key, root_level=False):
         """
         Uses find function to see if the requested key is in the dictionary
+        root_level - True if we want to limit search in the first level
+                   - False if we want to search if key exist anywhere - (default)
         Returns: True or False
 
         >>> data = {'a':1, 'b':2, 'c': {'d': 4, 'e': 5, 'f': [6, 7, 8], 'g':[{'h': 8, 'i': 9, 'j': 10}, {'a':11,
@@ -214,10 +216,17 @@ class Butler(object):
         >>> Butler({'name': False}).key_exists('name')
         True
         """
-        if key in self.key_list(self.data):
+        if not root_level:
+            key_list = [x[0] for x in self.flatten()]
+        else:
+            key_list = self.key_list(self.data)
+
+        if key in key_list:
             return True
         else:
             return False
+
+
 
     def set(self, li, el):
         """
