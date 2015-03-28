@@ -1,7 +1,7 @@
 Butler
 ======
 
-##Python Dictionaries and Lists on Steroids
+### Python Dictionaries and Lists on Steroids
 
 Butler is the missing library that adds _additional_ and _necessary_ features to Python ```dict``` as well as ```list```. It helps you traversing nested lists/dicts better. Butler tries to be closely resemble the cpython dictionary functions, but has got a ton of helper functions
 
@@ -88,10 +88,10 @@ For dictionaries, path holds the keys for the element and for lists its the inde
 ##get()
 Get the element by specifying path with keys to that value.
 
-	* INPUT: __path__ - a list of keys for the dictionary or list
+* INPUT: __path__ - a list of keys for the dictionary or list
 
-	* OUTPUT: Returns the corresponding value if found, else None.
-		- No Exception raised
+* OUTPUT: Returns the corresponding value if found, else None.
+	- No Exception raised
 
 ```python
 >>> data1 = Butler({"key": "value"})
@@ -110,12 +110,15 @@ Get the element by specifying path with keys to that value.
 ##set()
 Set the element by specifying path with keys to that value. Used to write to Butler objects. Makes it very easy to update and insert leaf nodes.
 
-	* INPUT: __path__ - a list of keys for the dictionary or list
-	         __value__ - Value to be set/update/append to the element in the matching location
+* INPUT:
 
-	* OUTPUT:
-        Returns True - Successful update or create
-        Returns False - Failed due to non-existent path
+	__path__ - a list of keys for the dictionary or list
+
+	__value__ - Value to be set/update/append to the element in the matching location
+
+* OUTPUT:
+Returns True - Successful update or create
+Returns False - Failed due to non-existent path
 
 
 ```python
@@ -153,9 +156,9 @@ True
 
 ##path_exists()
 
-	* INPUT: list containing path to an expected key
+* INPUT: __list__ containing path to an expected key
 
-	* OUTPUT: True if found, False if NOT.
+* OUTPUT: True if found, False if NOT.
 
 
 ```python
@@ -175,9 +178,9 @@ True
 ##findall()
 Find all the values with the same key in a multi-level dictionary
 
-	* INPUT: key to be searched in the dictionary
+* INPUT: __key__ to be searched in the dictionary
 
-	* OUTPUT: ```list``` of all values with matching keys
+* OUTPUT: list of all values with matching keys
 
 ```python
 >>> data = {'a':1, 'b':2, 'c': {'d': 4, 'e': 5, 'f': [6, 7, 8],
@@ -192,9 +195,9 @@ Find all the values with the same key in a multi-level dictionary
 ##find()
 Gets the first value matching the argument key
 
-	*INPUT: key to be searched in the dict or list (list position in case of list)
+*INPUT: __key__ to be searched in the dict or list (list position in case of list)
 
-	*OUTPUT: first result matching the key in the entire dictionary
+*OUTPUT: first result matching the key in the entire dictionary
 
 
 ```python
@@ -213,7 +216,7 @@ Gets the first value matching the argument key
 
 ##key_exists()
 
-Uses find function to see if the requested key is in the dictionary
+Uses find function to see if the requested key exist in **any level** in the dictionary
 Returns: ```True``` or ```False```
 
 ```python
@@ -226,5 +229,9 @@ Returns: ```True``` or ```False```
 >>> quick.key_exists('a')
 True
 >>> quick.key_exists('w')
+False
+>>> quick.key_exists('f')
+True
+>>> quick.key_exists('f', root_level=True)  # if the key exist in root level
 False
 ```
