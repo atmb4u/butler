@@ -6,7 +6,7 @@ Butler
 Butler is the missing library that adds _additional_ and _necessary_ features to Python ```dict``` as well as ```list```. It helps you traversing nested lists/dicts better. Butler tries to be closely resemble the cpython dictionary functions, but has got a ton of helper functions
 
 
-__Butler is NOT python dict 2.0__. It is a helper library that provides a clean API for traversing nested lists and dicts.
+NB: __Butler is NOT python dict 2.0__. It is a helper library that provides a clean API for traversing nested lists and dicts.
 
 
 __Butler suppresses errors and exceptions.__ Its good as well as bad depends on what you expect from it. Also on the kind of data you are working with. If its a huge document(eg., __JSON__ ) with nullable fields and a lot of multi-level lists, ```Butler``` is designed for you.
@@ -64,7 +64,7 @@ True
 
 ##Key Functions
 
-__get()__ - returns the value at the given path
+__get()__ - returns the value at the given path (list)
 
 __set()__ - returns True on updating the data, False on failure
 
@@ -81,8 +81,7 @@ __data__ - outputs the object which is being manipulated
 
 __path__
 ========
-
-For dictionaries, path holds the keys for the element and for lists its the index for the element in the list.
+Its a list holding the reference to the entity. For dictionaries, path holds the keys for the element and for lists its the index for the element in the list.
 
 
 ##get()
@@ -110,13 +109,13 @@ Get the element by specifying path with keys to that value.
 ##set()
 Set the element by specifying path with keys to that value. Used to write to Butler objects. Makes it very easy to update and insert leaf nodes.
 
-* INPUT:
+* INPUT
 
 	__path__ - a list of keys for the dictionary or list
 
 	__value__ - Value to be set/update/append to the element in the matching location
 
-* OUTPUT:
+* OUTPUT
 Returns True - Successful update or create
 Returns False - Failed due to non-existent path
 
