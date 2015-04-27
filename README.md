@@ -194,9 +194,9 @@ Find all the values with the same key in a multi-level dictionary
 ##find()
 Gets the first value matching the argument key
 
-*INPUT: __key__ to be searched in the dict or list (list position in case of list)
+* INPUT: __key__ to be searched in the dict or list (list position in case of list)
 
-*OUTPUT: first result matching the key in the entire dictionary
+* OUTPUT: first result matching the key in the entire dictionary
 
 
 ```python
